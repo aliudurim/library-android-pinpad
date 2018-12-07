@@ -1,0 +1,8 @@
+# Ignore build folder
+/build
+
+# IDEA/Android Studio project files
+*.iml
+
+# Ignore reports folder
+/reports
