@@ -4,6 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
 import kotlinx.android.synthetic.main.view_pin_pad_item.view.*
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
+import android.graphics.drawable.shapes.RectShape
+
 
 class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     fun bindViewHolder(pinPad: PinPad) {
@@ -30,14 +34,18 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun initViewsWithAttrs(pinPad: PinPad) {
-        view.cvPinPadItem.layoutParams.width = view.context.resources.getDimension(pinPad.itemSize).toInt()
-        view.cvPinPadItem.setCardBackgroundColor(pinPad.backgroundColor)
+        view.clPinPadItem.layoutParams.width = view.context.resources.getDimension(pinPad.itemSize).toInt()
+
         when (pinPad.backgroundType) {
             BackgroundOfItem.SQUARE -> {
-                //TODO set Square background of item
+                val defShape = ShapeDrawable(RectShape())
+                defShape.paint.color = pinPad.backgroundColor
+                view.clPinPadItem.background = defShape
             }
             BackgroundOfItem.OVAL -> {
-                //TODO set Oval background of item
+                val defShape = ShapeDrawable(OvalShape())
+                defShape.paint.color = pinPad.backgroundColor
+                view.clPinPadItem.background = defShape
             }
         }
         view.txtPinPadItem.setTextSize(
