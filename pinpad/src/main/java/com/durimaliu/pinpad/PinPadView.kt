@@ -1,6 +1,8 @@
 package com.durimaliu.pinpad
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.v7.widget.GridLayoutManager
@@ -44,7 +46,14 @@ constructor(
         )
         pinPadList.layoutManager = gridLayoutManager
         pinPadList.adapter = pinPadAdapter
-        pinPadAdapter.fillPinAdapter(12)
+
+        pinPadAdapter.fillPinAdapter(
+            R.drawable.ic_backspace, R.drawable.ic_done,
+            Color.parseColor("#b3b3b3"),
+            BackgroundOfItem.SQUARE, R.dimen.size_80,
+            R.dimen.text_size_14, Color.parseColor("#000000"),
+            Typeface.DEFAULT_BOLD
+        )
     }
 }
 
