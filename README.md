@@ -1,2 +1,2 @@
-# library-android-pinpad
-A PinPad for android apps
+# Android Pinpad
+This is an Android library for a pin pad view.
