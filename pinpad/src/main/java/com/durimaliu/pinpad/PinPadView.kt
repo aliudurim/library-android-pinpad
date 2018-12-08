@@ -33,6 +33,7 @@ constructor(
         set.clone(this)
         set.match(view, this)
 
+        val pinPadAdapter = PinPadAdapter()
         val gridLayoutManager = GridLayoutManager(context, SPAN_COUNT)
         gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
         pinPadList.addItemDecoration(
@@ -42,7 +43,8 @@ constructor(
             )
         )
         pinPadList.layoutManager = gridLayoutManager
-        pinPadList.adapter = PinPadAdapter()
+        pinPadList.adapter = pinPadAdapter
+        pinPadAdapter.fillPinAdapter(12)
     }
 }
 

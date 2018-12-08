@@ -2,19 +2,41 @@
 <android.support.constraint.ConstraintLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/clPinPadParentItem"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content">
 
 	<android.support.v7.widget.CardView
+			android:id="@+id/cvPinPadItem"
 			android:layout_width="@dimen/size_80"
 			android:layout_height="@dimen/size_0"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintDimensionRatio="W,1:1"
+			app:cardCornerRadius="@dimen/size_0"
 			app:layout_constraintHorizontal_bias="0.0"
-			app:cardBackgroundColor="#b3b3b3"
 			app:layout_constraintBottom_toBottomOf="parent">
 
+		<TextView
+				android:id="@+id/txtPinPadItem"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:textAllCaps="true"
+				android:textStyle="bold"
+				android:visibility="invisible"
+				android:textColor="@android:color/white"
+				android:textSize="@dimen/text_size_14"/>
+
+		<ImageView
+				android:id="@+id/imgPinPadItem"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:adjustViewBounds="true"
+				android:scaleType="fitCenter"
+				android:visibility="invisible"/>
 	</android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
