@@ -2,6 +2,7 @@
 <resources>
 	<!-- Dimensions for margins or space-->
 	<dimen name="space_0">0dp</dimen>
+	<dimen name="space_10">10dp</dimen>
 
 	<!-- Dimensions for sizes-->
 	<dimen name="size_0">0dp</dimen>

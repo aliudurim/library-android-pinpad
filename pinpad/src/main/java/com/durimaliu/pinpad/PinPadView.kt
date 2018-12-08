@@ -35,6 +35,12 @@ constructor(
 
         val gridLayoutManager = GridLayoutManager(context, SPAN_COUNT)
         gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        pinPadList.addItemDecoration(
+            ItemDecorationRecycleView(
+                resources.getDimensionPixelSize(R.dimen.space_10),
+                SPAN_COUNT
+            )
+        )
         pinPadList.layoutManager = gridLayoutManager
         pinPadList.adapter = PinPadAdapter()
     }
