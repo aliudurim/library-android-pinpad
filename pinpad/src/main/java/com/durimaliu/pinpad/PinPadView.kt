@@ -3,9 +3,12 @@ package com.durimaliu.pinpad
 import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import kotlinx.android.synthetic.main.view_pin_pad.view.*
 
 class PinPadView @JvmOverloads
 constructor(
@@ -13,6 +16,10 @@ constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
+
+    companion object {
+        private const val SPAN_COUNT = 3
+    }
 
     init {
         val view = LayoutInflater.from(context).inflate(
@@ -25,6 +32,11 @@ constructor(
 
         set.clone(this)
         set.match(view, this)
+
+        val gridLayoutManager = GridLayoutManager(context, SPAN_COUNT)
+        gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        pinPadList.layoutManager = gridLayoutManager
+        pinPadList.adapter = PinPadAdapter()
     }
 }
 

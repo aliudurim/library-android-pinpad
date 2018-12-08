@@ -5,6 +5,7 @@
 
 	<!-- Dimensions for sizes-->
 	<dimen name="size_0">0dp</dimen>
+	<dimen name="size_80">80dp</dimen>
 
 	<!-- Dimensions for text size-->
 	<dimen name="text_size_14">14sp</dimen>
