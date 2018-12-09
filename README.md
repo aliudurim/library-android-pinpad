@@ -3,6 +3,8 @@
 
 This is an Android library for a pin pad view.
 
+<img src="/images/demo_image.png" alt="Demo Screen Capture" width="300px" />
+
 ## Installation
 
 Step 1. Add the JitPack repository to your build file
