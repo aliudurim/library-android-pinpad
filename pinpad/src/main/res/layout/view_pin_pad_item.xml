@@ -26,14 +26,15 @@
 				android:layout_gravity="center"
 				android:gravity="center"
 				android:textAllCaps="true"
-				android:textStyle="bold"
 				android:visibility="invisible"
-				android:textColor="@android:color/white"
-				android:textSize="@dimen/text_size_14"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent"/>
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_marginBottom="@dimen/space_8"
+				android:layout_marginTop="@dimen/space_8"
+				android:layout_marginEnd="@dimen/space_8"
+				android:layout_marginStart="@dimen/space_8"/>
 
 		<ImageView
 				android:id="@+id/imgPinPadItem"
@@ -47,6 +48,10 @@
 				app:layout_constraintTop_toTopOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent"/>
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_marginEnd="@dimen/space_8"
+				android:layout_marginTop="@dimen/space_8"
+				android:layout_marginStart="@dimen/space_8"
+				android:layout_marginBottom="@dimen/space_8"/>
 	</android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

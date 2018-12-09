@@ -3,6 +3,7 @@
 	<!-- Dimensions for margins or space-->
 	<dimen name="space_0">0dp</dimen>
 	<dimen name="space_2">2dp</dimen>
+	<dimen name="space_8">8dp</dimen>
 	<dimen name="space_10">10dp</dimen>
 
 	<!-- Dimensions for sizes-->
