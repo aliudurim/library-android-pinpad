@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity(), (View, PinPad) -> Unit {
     }
 
     override fun invoke(view: View, pinpad: PinPad) {
-        // TODO user can received which view is pressed and can get PinPad object
+        textView.text = String.format("%s%s", view, pinpad.toString())
     }
 }

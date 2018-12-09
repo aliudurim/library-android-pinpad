@@ -5,14 +5,23 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".MainActivity">
+		tools:context=".MainActivityAndroid">
 
+	<TextView
+			android:id="@+id/textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:layout_marginStart="@dimen/space_10"
+			android:layout_marginEnd="@dimen/space_10"
+			android:textAlignment="center"/>
 
 	<com.durimaliu.pinpad.PinPadView
 			android:id="@+id/pinPadView"
-			android:layout_width="@dimen/size_0"
-			android:layout_height="@dimen/size_0"
-			app:layout_constraintTop_toTopOf="parent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:size_grid_spacing="@dimen/space_10"
 			app:item_size="@dimen/size_80"
@@ -24,5 +33,6 @@
 			app:item_text_color="@android:color/white"
 			app:item_text_style="normal"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintStart_toStartOf="parent"/>
+			app:layout_constraintStart_toStartOf="parent">
+	</com.durimaliu.pinpad.PinPadView>
 </android.support.constraint.ConstraintLayout>
