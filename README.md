@@ -1,4 +1,6 @@
 # Android Pinpad
+[![](https://jitpack.io/v/aliudurim/library-android-pinpad.svg)](https://jitpack.io/#aliudurim/library-android-pinpad)
+
 This is an Android library for a pin pad view.
 
 ## Installation
