@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.view_pin_pad_item.view.*
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.graphics.drawable.shapes.RectShape
+import android.support.constraint.Constraints
 
 
 class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -34,6 +35,9 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             if (pinPad.itemSize < it.intrinsicWidth || pinPad.itemSize < it.intrinsicHeight) {
                 view.imgPinPadItem.layoutParams.width = pinPad.itemSize / 2
                 view.imgPinPadItem.layoutParams.height = pinPad.itemSize / 2
+            } else {
+                view.imgPinPadItem.layoutParams.width = Constraints.LayoutParams.WRAP_CONTENT
+                view.imgPinPadItem.layoutParams.height = Constraints.LayoutParams.WRAP_CONTENT
             }
         }
 
