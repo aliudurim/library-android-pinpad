@@ -9,6 +9,7 @@
 
 
 	<com.durimaliu.pinpad.PinPadView
+			android:id="@+id/pinPadView"
 			android:layout_width="@dimen/size_0"
 			android:layout_height="@dimen/size_0"
 			app:layout_constraintTop_toTopOf="parent"

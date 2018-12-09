@@ -10,7 +10,10 @@ import android.graphics.drawable.shapes.RectShape
 
 
 class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    fun bindViewHolder(pinPad: PinPad) {
+    fun bindViewHolder(
+        pinPad: PinPad,
+        onItemClickListener: (view: View, pinPad: PinPad) -> Unit
+    ) {
 
         initViewsWithAttrs(pinPad)
 
@@ -31,6 +34,9 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         pinPad.imageRes?.let { view.imgPinPadItem.setImageDrawable(it) }
         pinPad.number?.let { view.txtPinPadItem.text = pinPad.number.toString() }
+        view.clPinPadItem.setOnClickListener {
+            onItemClickListener.invoke(it, pinPad)
+        }
     }
 
     private fun initViewsWithAttrs(pinPad: PinPad) {

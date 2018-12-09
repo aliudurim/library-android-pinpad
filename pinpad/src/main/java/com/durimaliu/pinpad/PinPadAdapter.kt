@@ -4,9 +4,11 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
-class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
+class PinPadAdapter(private val onItemClickListener: (view: View, pinPad: PinPad) -> Unit) :
+    RecyclerView.Adapter<PinPadViewHolder>() {
 
     companion object {
         private const val NUMBER_OF_PIN_PAD = 12
@@ -27,7 +29,7 @@ class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
     override fun getItemCount(): Int = pinPadList.size
 
     override fun onBindViewHolder(pinPadViewHolder: PinPadViewHolder, position: Int) {
-        pinPadViewHolder.bindViewHolder(pinPadList[position])
+        pinPadViewHolder.bindViewHolder(pinPadList[position], onItemClickListener)
     }
 
     fun fillPinAdapter(

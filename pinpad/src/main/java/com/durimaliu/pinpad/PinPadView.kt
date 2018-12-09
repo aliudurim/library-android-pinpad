@@ -22,6 +22,8 @@ constructor(
         private const val SPAN_COUNT = 3
     }
 
+    var onItemClickListener: ((View, PinPad) -> Unit)? = null
+
     init {
         val view = LayoutInflater.from(context).inflate(
             R.layout.view_pin_pad,
@@ -34,7 +36,9 @@ constructor(
         set.clone(this)
         set.match(view, this)
 
-        val pinPadAdapter = PinPadAdapter()
+        val pinPadAdapter = PinPadAdapter { view, pinPad ->
+            onItemClickListener?.invoke(view, pinPad)
+        }
         val gridLayoutManager = GridLayoutManager(context, SPAN_COUNT)
         gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
         pinPadList.layoutManager = gridLayoutManager
