@@ -31,6 +31,7 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         pinPad.number?.let { view.txtPinPadItem.text = it.toString() }
 
         view.clPinPadItem.layoutParams.width = pinPad.itemSize
+
         pinPad.imageRes?.let {
             if (pinPad.itemSize < it.intrinsicWidth || pinPad.itemSize < it.intrinsicHeight) {
                 view.imgPinPadItem.layoutParams.width = pinPad.itemSize / 2
@@ -41,10 +42,18 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             }
         }
 
-        view.txtPinPadItem.setTextSize(
-            TypedValue.COMPLEX_UNIT_PX,
-            pinPad.textSize.toFloat()
-        )
+        if (pinPad.itemSize < pinPad.textSize || (pinPad.itemSize / 2) < pinPad.textSize) {
+            view.txtPinPadItem.setTextSize(
+                TypedValue.COMPLEX_UNIT_PX,
+                (pinPad.itemSize.toFloat() / 2.5).toFloat()
+            )
+        } else {
+            view.txtPinPadItem.setTextSize(
+                TypedValue.COMPLEX_UNIT_PX,
+                pinPad.textSize.toFloat()
+            )
+        }
+
         view.txtPinPadItem.setTextColor(pinPad.textColor)
         view.txtPinPadItem.typeface = pinPad.textStyle
     }
