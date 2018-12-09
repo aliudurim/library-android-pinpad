@@ -37,12 +37,6 @@ constructor(
         val pinPadAdapter = PinPadAdapter()
         val gridLayoutManager = GridLayoutManager(context, SPAN_COUNT)
         gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        pinPadList.addItemDecoration(
-            ItemDecorationRecycleView(
-                resources.getDimensionPixelSize(R.dimen.space_10),
-                SPAN_COUNT
-            )
-        )
         pinPadList.layoutManager = gridLayoutManager
         pinPadList.adapter = pinPadAdapter
 
@@ -50,14 +44,13 @@ constructor(
             val typedArray = context.obtainStyledAttributes(
                 it, R.styleable.PinPadView, 0, 0
             )
-
-            val imageDeleteRes = ContextCompat.getDrawable(
-                context,
-                typedArray.getResourceId(R.styleable.PinPadView_delete_item_background, R.drawable.ic_backspace)
+            val gridSpacing = typedArray.getDimension(
+                R.styleable.PinPadView_size_grid_spacing,
+                R.dimen.space_2.toFloat()
             )
-            val imageEnterRes = ContextCompat.getDrawable(
-                context,
-                typedArray.getResourceId(R.styleable.PinPadView_enter_item_background, R.drawable.ic_done)
+            val itemSize = typedArray.getDimension(
+                R.styleable.PinPadView_item_size,
+                R.dimen.size_80.toFloat()
             )
             val itemBackground = typedArray.getColor(
                 R.styleable.PinPadView_item_background,
@@ -65,11 +58,22 @@ constructor(
                     context, R.color.colorPrimary
                 )
             )
-
             val itemBackgroundType =
                 typedArray.getInt(R.styleable.PinPadView_item_background_type, 0)
-
-            val itemSize = typedArray.getDimension(R.styleable.PinPadView_item_size, R.dimen.size_80.toFloat())
+            val imageDeleteRes = ContextCompat.getDrawable(
+                context,
+                typedArray.getResourceId(
+                    R.styleable.PinPadView_item_delete_background,
+                    R.drawable.ic_backspace
+                )
+            )
+            val imageEnterRes = ContextCompat.getDrawable(
+                context,
+                typedArray.getResourceId(
+                    R.styleable.PinPadView_item_enter_background,
+                    R.drawable.ic_done
+                )
+            )
             val itemTextSize =
                 typedArray.getDimension(R.styleable.PinPadView_item_text_size, R.dimen.text_size_14.toFloat())
             val itemTextColor = typedArray.getColor(
@@ -78,8 +82,17 @@ constructor(
                     context, R.color.colorAccent
                 )
             )
+            val itemTextStyle = typedArray.getInt(
+                R.styleable.PinPadView_item_text_style,
+                0
+            )
 
-            val itemTextStyle = typedArray.getInt(R.styleable.PinPadView_item_text_style, 0)
+            pinPadList.addItemDecoration(
+                ItemDecorationRecycleView(
+                    gridSpacing.toInt(),
+                    SPAN_COUNT
+                )
+            )
 
             pinPadAdapter.fillPinAdapter(
                 imageDeleteRes, imageEnterRes,

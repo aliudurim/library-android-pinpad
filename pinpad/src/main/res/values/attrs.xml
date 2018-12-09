@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<declare-styleable name="PinPadView">
-		<attr name="delete_item_background" format="reference"/>
-		<attr name="enter_item_background" format="reference"/>
+		<!-- grid list spacing -->
+		<attr name="size_grid_spacing" format="dimension"/>
+		<!-- pin pad item attrs -->
+		<attr name="item_size" format="dimension"/>
 		<attr name="item_background" format="color"/>
 		<attr name="item_background_type" format="enum">
 			<enum name="SQUARE" value="0"/>
 			<enum name="OVAL" value="1"/>
 		</attr>
-		<attr name="item_size" format="dimension"/>
+		<attr name="item_delete_background" format="reference"/>
+		<attr name="item_enter_background" format="reference"/>
+		<!-- pin pad item text attrs -->
 		<attr name="item_text_size" format="dimension"/>
 		<attr name="item_text_color" format="color"/>
 		<attr name="item_text_style" format="reference">
