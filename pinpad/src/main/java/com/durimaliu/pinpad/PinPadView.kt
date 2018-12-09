@@ -1,10 +1,9 @@
 package com.durimaliu.pinpad
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
@@ -47,13 +46,47 @@ constructor(
         pinPadList.layoutManager = gridLayoutManager
         pinPadList.adapter = pinPadAdapter
 
-        pinPadAdapter.fillPinAdapter(
-            R.drawable.ic_backspace, R.drawable.ic_done,
-            Color.parseColor("#b3b3b3"),
-            BackgroundOfItem.SQUARE, R.dimen.size_80,
-            R.dimen.text_size_14, Color.parseColor("#000000"),
-            Typeface.DEFAULT_BOLD
-        )
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(
+                it, R.styleable.PinPadView, 0, 0
+            )
+
+            val imageDeleteRes = ContextCompat.getDrawable(
+                context,
+                typedArray.getResourceId(R.styleable.PinPadView_delete_item_background, R.drawable.ic_backspace)
+            )
+            val imageEnterRes = ContextCompat.getDrawable(
+                context,
+                typedArray.getResourceId(R.styleable.PinPadView_enter_item_background, R.drawable.ic_done)
+            )
+            val itemBackground = ContextCompat.getColor(
+                context,
+                typedArray.getResourceId(R.styleable.PinPadView_item_background, R.color.colorPrimary)
+            )
+
+            val itemBackgroundType =
+                typedArray.getInt(R.styleable.PinPadView_item_background_type, 0)
+
+            val itemSize = typedArray.getDimension(R.styleable.PinPadView_item_size, R.dimen.size_80.toFloat())
+            val itemTextSize =
+                typedArray.getDimension(R.styleable.PinPadView_item_text_size, R.dimen.text_size_14.toFloat())
+            val itemTextColor = ContextCompat.getColor(
+                context,
+                typedArray.getResourceId(R.styleable.PinPadView_item_text_color, R.color.colorAccent)
+            )
+            val itemTextStyle = typedArray.getInt(R.styleable.PinPadView_item_text_style, 0)
+
+
+            pinPadAdapter.fillPinAdapter(
+                imageDeleteRes, imageEnterRes,
+                itemBackground,
+                itemBackgroundType, itemSize.toInt(),
+                itemTextSize.toInt(), itemTextColor,
+                itemTextStyle
+            )
+
+            typedArray.recycle()
+        }
     }
 }
 

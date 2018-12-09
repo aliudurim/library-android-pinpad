@@ -1,6 +1,7 @@
 package com.durimaliu.pinpad
 
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,11 +31,10 @@ class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
     }
 
     fun fillPinAdapter(
-        imageDeleteRes: Int?, imageEnterRes: Int?,
-        backgroundColor: Int,
-        backgroundType: Enum<BackgroundOfItem>,
+        imageDeleteRes: Drawable?, imageEnterRes: Drawable?,
+        backgroundColor: Int, backgroundType: Int,
         itemSize: Int, textSize: Int, textColor: Int,
-        textStyle: Typeface
+        textStyle: Int
     ) {
         pinPadList.clear()
         for (i in 1..NUMBER_OF_PIN_PAD) {
@@ -44,8 +44,8 @@ class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
                     pinPadList.add(
                         PinPad(
                             i, TypeOfItem.DELETE, null, imageDeleteRes,
-                            backgroundColor, backgroundType, itemSize,
-                            textSize, textColor, textStyle
+                            backgroundColor, backgroundType(backgroundType), itemSize,
+                            textSize, textColor, textStyle(textStyle)
                         )
                     )
                 }
@@ -53,8 +53,8 @@ class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
                     pinPadList.add(
                         PinPad(
                             i, TypeOfItem.ENTER, null, imageEnterRes,
-                            backgroundColor, backgroundType, itemSize,
-                            textSize, textColor, textStyle
+                            backgroundColor, backgroundType(backgroundType), itemSize,
+                            textSize, textColor, textStyle(textStyle)
                         )
                     )
                 }
@@ -62,12 +62,28 @@ class PinPadAdapter : RecyclerView.Adapter<PinPadViewHolder>() {
                     pinPadList.add(
                         PinPad(
                             i, TypeOfItem.NUMBER, i, null,
-                            backgroundColor, backgroundType, itemSize,
-                            textSize, textColor, textStyle
+                            backgroundColor, backgroundType(backgroundType), itemSize,
+                            textSize, textColor, textStyle(textStyle)
                         )
                     )
                 }
             }
+        }
+    }
+
+    private fun backgroundType(backgroundType: Int): BackgroundOfItem {
+        return when (backgroundType) {
+            0 -> BackgroundOfItem.SQUARE
+            1 -> BackgroundOfItem.OVAL
+            else -> BackgroundOfItem.SQUARE
+        }
+    }
+
+    private fun textStyle(textStyle: Int): Typeface {
+        return when (textStyle) {
+            0 -> Typeface.DEFAULT
+            1 -> Typeface.DEFAULT_BOLD
+            else -> Typeface.DEFAULT
         }
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="PinPadView">
+		<attr name="delete_item_background" format="reference"/>
+		<attr name="enter_item_background" format="reference"/>
+		<attr name="item_background" format="color"/>
+		<attr name="item_background_type" format="enum">
+			<enum name="SQUARE" value="0"/>
+			<enum name="OVAL" value="1"/>
+		</attr>
+		<attr name="item_size" format="dimension"/>
+		<attr name="item_text_size" format="dimension"/>
+		<attr name="item_text_color" format="color"/>
+		<attr name="item_text_style" format="reference">
+			<flag name="normal" value="0"/>
+			<flag name="bold" value="1"/>
+			<flag name="italic" value="2"/>
+		</attr>
+	</declare-styleable>
+</resources>

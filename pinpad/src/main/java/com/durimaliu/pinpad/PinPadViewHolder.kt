@@ -29,12 +29,12 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             }
         }
 
-        pinPad.imageRes?.let { view.imgPinPadItem.setImageResource(it) }
+        pinPad.imageRes?.let { view.imgPinPadItem.setImageDrawable(it) }
         pinPad.number?.let { view.txtPinPadItem.text = pinPad.number.toString() }
     }
 
     private fun initViewsWithAttrs(pinPad: PinPad) {
-        view.clPinPadItem.layoutParams.width = view.context.resources.getDimension(pinPad.itemSize).toInt()
+        view.clPinPadItem.layoutParams.width = pinPad.itemSize
 
         when (pinPad.backgroundType) {
             BackgroundOfItem.SQUARE -> {
@@ -50,7 +50,7 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         }
         view.txtPinPadItem.setTextSize(
             TypedValue.COMPLEX_UNIT_PX,
-            view.context.resources.getDimension(pinPad.textSize)
+            pinPad.textSize.toFloat()
         )
         view.txtPinPadItem.setTextColor(pinPad.textColor)
         view.txtPinPadItem.typeface = pinPad.textStyle
