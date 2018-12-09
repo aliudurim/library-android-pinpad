@@ -17,7 +17,56 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         initViewsWithAttrs(pinPad)
 
-        when (pinPad.type) {
+        view.clPinPadItem.setOnClickListener {
+            onItemClickListener.invoke(it, pinPad)
+        }
+    }
+
+    private fun initViewsWithAttrs(pinPad: PinPad) {
+        visibilityBasedOnType(pinPad)
+        backgroundBasedOnType(pinPad)
+
+        pinPad.imageRes?.let { view.imgPinPadItem.setImageDrawable(it) }
+        pinPad.number?.let { view.txtPinPadItem.text = it.toString() }
+
+        view.clPinPadItem.layoutParams.width = pinPad.itemSize
+        pinPad.imageRes?.let {
+            if (pinPad.itemSize < it.intrinsicWidth || pinPad.itemSize < it.intrinsicHeight) {
+                view.imgPinPadItem.layoutParams.width = pinPad.itemSize / 2
+                view.imgPinPadItem.layoutParams.height = pinPad.itemSize / 2
+            }
+        }
+
+        view.txtPinPadItem.setTextSize(
+            TypedValue.COMPLEX_UNIT_PX,
+            pinPad.textSize.toFloat()
+        )
+        view.txtPinPadItem.setTextColor(pinPad.textColor)
+        view.txtPinPadItem.typeface = pinPad.textStyle
+    }
+
+    private fun backgroundBasedOnType(pinPad: PinPad) {
+        return when (pinPad.backgroundType) {
+            BackgroundOfItem.SQUARE -> {
+                val defShape = ShapeDrawable(RectShape())
+                defShape.paint.color = pinPad.backgroundColor
+                view.clPinPadItem.background = defShape
+            }
+            BackgroundOfItem.OVAL -> {
+                val defShape = ShapeDrawable(OvalShape())
+                defShape.paint.color = pinPad.backgroundColor
+                view.clPinPadItem.background = defShape
+            }
+            else -> {
+                val defShape = ShapeDrawable(RectShape())
+                defShape.paint.color = pinPad.backgroundColor
+                view.clPinPadItem.background = defShape
+            }
+        }
+    }
+
+    private fun visibilityBasedOnType(pinPad: PinPad) {
+        return when (pinPad.type) {
             TypeOfItem.NUMBER -> {
                 view.imgPinPadItem.visibility = View.INVISIBLE
                 view.txtPinPadItem.visibility = View.VISIBLE
@@ -30,35 +79,10 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
                 view.imgPinPadItem.visibility = View.VISIBLE
                 view.txtPinPadItem.visibility = View.INVISIBLE
             }
-        }
-
-        pinPad.imageRes?.let { view.imgPinPadItem.setImageDrawable(it) }
-        pinPad.number?.let { view.txtPinPadItem.text = pinPad.number.toString() }
-        view.clPinPadItem.setOnClickListener {
-            onItemClickListener.invoke(it, pinPad)
-        }
-    }
-
-    private fun initViewsWithAttrs(pinPad: PinPad) {
-        view.clPinPadItem.layoutParams.width = pinPad.itemSize
-
-        when (pinPad.backgroundType) {
-            BackgroundOfItem.SQUARE -> {
-                val defShape = ShapeDrawable(RectShape())
-                defShape.paint.color = pinPad.backgroundColor
-                view.clPinPadItem.background = defShape
-            }
-            BackgroundOfItem.OVAL -> {
-                val defShape = ShapeDrawable(OvalShape())
-                defShape.paint.color = pinPad.backgroundColor
-                view.clPinPadItem.background = defShape
+            else -> {
+                view.imgPinPadItem.visibility = View.INVISIBLE
+                view.txtPinPadItem.visibility = View.VISIBLE
             }
         }
-        view.txtPinPadItem.setTextSize(
-            TypedValue.COMPLEX_UNIT_PX,
-            pinPad.textSize.toFloat()
-        )
-        view.txtPinPadItem.setTextColor(pinPad.textColor)
-        view.txtPinPadItem.typeface = pinPad.textStyle
     }
 }
