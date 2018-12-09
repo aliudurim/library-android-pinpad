@@ -84,3 +84,7 @@ public class MainActivityAndroid extends AppCompatActivity {
     }
 }
 ```
+
+## Contributing
+
+Would you like to contribute? Fork us and send a pull request! Be sure to checkout our issues first.
