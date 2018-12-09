@@ -9,10 +9,19 @@
 
 
 	<com.durimaliu.pinpad.PinPadView
-			android:layout_width="0dp"
-			android:layout_height="0dp"
+			android:layout_width="@dimen/size_0"
+			android:layout_height="@dimen/size_0"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:size_grid_spacing="@dimen/space_10"
+			app:item_size="@dimen/size_80"
+			app:item_background="@color/colorPrimary"
+			app:item_background_type="SQUARE"
+			app:item_delete_background="@drawable/ic_backspace"
+			app:item_enter_background="@drawable/ic_done"
+			app:item_text_size="@dimen/text_size_14"
+			app:item_text_color="@android:color/white"
+			app:item_text_style="normal"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"/>
 </android.support.constraint.ConstraintLayout>
