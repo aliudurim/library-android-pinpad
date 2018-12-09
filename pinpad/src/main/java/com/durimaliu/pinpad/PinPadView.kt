@@ -59,9 +59,11 @@ constructor(
                 context,
                 typedArray.getResourceId(R.styleable.PinPadView_enter_item_background, R.drawable.ic_done)
             )
-            val itemBackground = ContextCompat.getColor(
-                context,
-                typedArray.getResourceId(R.styleable.PinPadView_item_background, R.color.colorPrimary)
+            val itemBackground = typedArray.getColor(
+                R.styleable.PinPadView_item_background,
+                ContextCompat.getColor(
+                    context, R.color.colorPrimary
+                )
             )
 
             val itemBackgroundType =
@@ -70,12 +72,14 @@ constructor(
             val itemSize = typedArray.getDimension(R.styleable.PinPadView_item_size, R.dimen.size_80.toFloat())
             val itemTextSize =
                 typedArray.getDimension(R.styleable.PinPadView_item_text_size, R.dimen.text_size_14.toFloat())
-            val itemTextColor = ContextCompat.getColor(
-                context,
-                typedArray.getResourceId(R.styleable.PinPadView_item_text_color, R.color.colorAccent)
+            val itemTextColor = typedArray.getColor(
+                R.styleable.PinPadView_item_text_color,
+                ContextCompat.getColor(
+                    context, R.color.colorAccent
+                )
             )
-            val itemTextStyle = typedArray.getInt(R.styleable.PinPadView_item_text_style, 0)
 
+            val itemTextStyle = typedArray.getInt(R.styleable.PinPadView_item_text_style, 0)
 
             pinPadAdapter.fillPinAdapter(
                 imageDeleteRes, imageEnterRes,
