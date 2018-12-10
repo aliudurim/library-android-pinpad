@@ -97,7 +97,12 @@ constructor(
 
                 pinPadAdapter.fillPinAdapter(
                     imageDeleteRes, imageEnterRes,
-                    itemBackground, itemSize.toInt(),
+                    itemBackground, calculateItemMaxWidth(
+                        context,
+                        gridSpacing.toInt(),
+                        context.resources.getDimension(R.dimen.space_2).toInt(),
+                        itemSize.toInt()
+                    ),
                     itemTextSize.toInt(), itemTextColor,
                     itemTextStyle
                 )
@@ -105,6 +110,20 @@ constructor(
                 typedArray.recycle()
             }
         }
+    }
+}
+
+private fun calculateItemMaxWidth(
+    context: Context, gridSpacing: Int,
+    itemMargin: Int, itemSize: Int
+): Int {
+    val deviceWidth = context.resources.displayMetrics.widthPixels
+    val rowItemWidth = 2 * gridSpacing + 6 * itemMargin + 3 * itemSize
+
+    return if (deviceWidth < rowItemWidth) {
+        deviceWidth / 3 - 6 * itemMargin
+    } else {
+        itemSize
     }
 }
 
