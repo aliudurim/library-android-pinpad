@@ -34,8 +34,7 @@ class PinPadAdapter(private val onItemClickListener: (view: View, pinPad: PinPad
 
     fun fillPinAdapter(
         imageDeleteRes: Drawable?, imageEnterRes: Drawable?,
-        backgroundColor: Int, backgroundType: Int,
-        itemSize: Int, textSize: Int, textColor: Int,
+        backgroundColor: Int, itemSize: Int, textSize: Int, textColor: Int,
         textStyle: Int
     ) {
         pinPadList.clear()
@@ -45,39 +44,49 @@ class PinPadAdapter(private val onItemClickListener: (view: View, pinPad: PinPad
                 10 -> {
                     pinPadList.add(
                         PinPad(
-                            i, TypeOfItem.DELETE, null, imageDeleteRes,
-                            backgroundColor, backgroundType(backgroundType), itemSize,
-                            textSize, textColor, textStyle(textStyle)
+                            i,
+                            TypeOfItem.DELETE,
+                            itemSize,
+                            null,
+                            imageDeleteRes,
+                            backgroundColor,
+                            textSize,
+                            textColor,
+                            textStyle(textStyle)
                         )
                     )
                 }
                 12 -> {
                     pinPadList.add(
                         PinPad(
-                            i, TypeOfItem.ENTER, null, imageEnterRes,
-                            backgroundColor, backgroundType(backgroundType), itemSize,
-                            textSize, textColor, textStyle(textStyle)
+                            i,
+                            TypeOfItem.ENTER,
+                            itemSize,
+                            null,
+                            imageEnterRes,
+                            backgroundColor,
+                            textSize,
+                            textColor,
+                            textStyle(textStyle)
                         )
                     )
                 }
                 else -> {
                     pinPadList.add(
                         PinPad(
-                            i, TypeOfItem.NUMBER, i, null,
-                            backgroundColor, backgroundType(backgroundType), itemSize,
-                            textSize, textColor, textStyle(textStyle)
+                            i,
+                            TypeOfItem.NUMBER,
+                            itemSize,
+                            i,
+                            null,
+                            backgroundColor,
+                            textSize,
+                            textColor,
+                            textStyle(textStyle)
                         )
                     )
                 }
             }
-        }
-    }
-
-    private fun backgroundType(backgroundType: Int): BackgroundOfItem {
-        return when (backgroundType) {
-            0 -> BackgroundOfItem.SQUARE
-            1 -> BackgroundOfItem.OVAL
-            else -> BackgroundOfItem.SQUARE
         }
     }
 

@@ -5,11 +5,7 @@
 		<attr name="size_grid_spacing" format="dimension"/>
 		<!-- pin pad item attrs -->
 		<attr name="item_size" format="dimension"/>
-		<attr name="item_background" format="color"/>
-		<attr name="item_background_type" format="enum">
-			<enum name="SQUARE" value="0"/>
-			<enum name="OVAL" value="1"/>
-		</attr>
+		<attr name="item_background" format="color|reference"/>
 		<attr name="item_delete_background" format="reference"/>
 		<attr name="item_enter_background" format="reference"/>
 		<!-- pin pad item text attrs -->

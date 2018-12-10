@@ -4,10 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
 import kotlinx.android.synthetic.main.view_pin_pad_item.view.*
-import android.graphics.drawable.ShapeDrawable
-import android.graphics.drawable.shapes.OvalShape
-import android.graphics.drawable.shapes.RectShape
 import android.support.constraint.Constraints
+import android.support.v4.content.ContextCompat
 
 
 class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -25,10 +23,11 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
     private fun initViewsWithAttrs(pinPad: PinPad) {
         visibilityBasedOnType(pinPad)
-        backgroundBasedOnType(pinPad)
 
         pinPad.imageRes?.let { view.imgPinPadItem.setImageDrawable(it) }
         pinPad.number?.let { view.txtPinPadItem.text = it.toString() }
+
+        view.clPinPadItem.background = ContextCompat.getDrawable(view.context, pinPad.backgroundColor)
 
         view.clPinPadItem.layoutParams.width = pinPad.itemSize
 
@@ -56,26 +55,6 @@ class PinPadViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         view.txtPinPadItem.setTextColor(pinPad.textColor)
         view.txtPinPadItem.typeface = pinPad.textStyle
-    }
-
-    private fun backgroundBasedOnType(pinPad: PinPad) {
-        return when (pinPad.backgroundType) {
-            BackgroundOfItem.SQUARE -> {
-                val defShape = ShapeDrawable(RectShape())
-                defShape.paint.color = pinPad.backgroundColor
-                view.clPinPadItem.background = defShape
-            }
-            BackgroundOfItem.OVAL -> {
-                val defShape = ShapeDrawable(OvalShape())
-                defShape.paint.color = pinPad.backgroundColor
-                view.clPinPadItem.background = defShape
-            }
-            else -> {
-                val defShape = ShapeDrawable(RectShape())
-                defShape.paint.color = pinPad.backgroundColor
-                view.clPinPadItem.background = defShape
-            }
-        }
     }
 
     private fun visibilityBasedOnType(pinPad: PinPad) {
