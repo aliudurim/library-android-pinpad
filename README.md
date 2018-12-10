@@ -37,7 +37,6 @@ dependencies {
     app:size_grid_spacing="@dimen/space_10"
     app:item_size="@dimen/size_80"
     app:item_background="@color/colorPrimary"
-    app:item_background_type="SQUARE"
     app:item_delete_background="@drawable/ic_backspace"
     app:item_enter_background="@drawable/ic_done"
     app:item_text_size="@dimen/text_size_14"
